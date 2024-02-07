@@ -19,7 +19,7 @@ public class EntidadUsuario {
     @Column(name = "apellidos", nullable = true, length = -1)
     private String apellidos;
     @OneToMany(mappedBy = "usuarioByIdUsuario")
-    private Collection<EntidadPrestamos> prestamosById;
+    private Collection<EntidadPrestamo> prestamosById;
 
     public int getId() {
         return id;
@@ -58,11 +58,11 @@ public class EntidadUsuario {
         return Objects.hash(id, nombre, apellidos);
     }
 
-    public Collection<EntidadPrestamos> getPrestamosById() {
+    public Collection<EntidadPrestamo> getPrestamosById() {
         return prestamosById;
     }
 
-    public void setPrestamosById(Collection<EntidadPrestamos> prestamosById) {
+    public void setPrestamosById(Collection<EntidadPrestamo> prestamosById) {
         this.prestamosById = prestamosById;
     }
 }

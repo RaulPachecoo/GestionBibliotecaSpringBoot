@@ -26,7 +26,7 @@ public class EntidadLibro {
     @JoinColumn(name = "categoria", referencedColumnName = "id")
     private EntidadCategoria categoria;
     @OneToMany(mappedBy = "libro")
-    private Collection<EntidadPrestamos> prestamosById;
+    private Collection<EntidadPrestamo> prestamosById;
 
     public int getId() {
         return id;
@@ -83,11 +83,11 @@ public class EntidadLibro {
 
 
 
-    public Collection<EntidadPrestamos> getPrestamosById() {
+    public Collection<EntidadPrestamo> getPrestamosById() {
         return prestamosById;
     }
 
-    public void setPrestamosById(Collection<EntidadPrestamos> prestamosById) {
+    public void setPrestamosById(Collection<EntidadPrestamo> prestamosById) {
         this.prestamosById = prestamosById;
     }
 }

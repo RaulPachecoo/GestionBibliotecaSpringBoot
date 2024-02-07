@@ -8,7 +8,7 @@
       <class>com.example.bibliotecaspringboot.models.entities.EntidadCategoria</class>
       <class>com.example.bibliotecaspringboot.models.entities.EntidadHistorico</class>
       <class>com.example.bibliotecaspringboot.models.entities.EntidadLibro</class>
-      <class>com.example.bibliotecaspringboot.models.entities.EntidadPrestamos</class>
+      <class>com.example.bibliotecaspringboot.models.entities.EntidadPrestamo</class>
       <class>com.example.bibliotecaspringboot.models.entities.EntidadUsuario</class>
       <properties>
           <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/BIBLIOTECA"/>
