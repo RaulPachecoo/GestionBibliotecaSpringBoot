@@ -1,0 +1,94 @@
+<!-- Define que el documento esta bajo el estandar de HTML 5 -->
+<!doctype html>
+
+<!-- Representa la raíz de un documento HTML o XHTML. Todos los demás elementos deben ser descendientes de este elemento. -->
+<html lang="es">
+    
+    <head>
+        
+        <meta charset="utf-8">
+        
+        <title> Login </title>    
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet"> 
+        
+        <!-- Link hacia el archivo de estilos css -->
+        <link rel="stylesheet" href="css/login.css">
+        
+        <style type="text/css">
+            
+        </style>
+        
+        <script type="text/javascript">
+        
+        </script>
+        
+    </head>
+    
+    <body>
+    
+        <div id="contenedor">
+            
+            <div id="contenedorcentrado">
+                <div id="login">
+                    <form id="loginform" method="POST" action="login.php">
+                        <label for="usuario">Usuario</label>
+                        <input id="usuario" type="text" name="usuario" placeholder="Usuario" required>
+                        
+                        <label for="password">Contraseña</label>
+                        <input id="password" type="password" placeholder="Contraseña" name="password" required>
+                        
+                        <button type="submit" title="Ingresar" name="Ingresar">Login</button>
+                    </form>
+                    
+                </div>
+                
+                <div id="derecho">
+                    <div class="titulo">
+                        Bienvenido
+                    </div>
+                    <hr>
+                    <div class="pie-form">
+                        <a href="./registro.php">¿No tienes Cuenta? Registrate</a>
+                        <hr>
+                        <a href="#">« Volver</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
+
+
+<?php
+session_start();
+require "conexion.php";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+$usuario = $_POST["usuario"];
+$password = $_POST["password"];
+$_SESSION['usuario'] = $usuario;
+$_SESSION['password'] = $password;
+
+
+$conexion = mysqli_connect("localhost", "root", "", "accesoDatos");
+
+if (!$conexion) {
+    die("Error de conexión: " . mysqli_connect_error());
+}
+
+$sql = "SELECT * FROM accesoDatos WHERE usuario = '$usuario' AND password = '$password'";
+$resultado = mysqli_query($conexion, $sql);
+
+if ($fila = mysqli_fetch_assoc($resultado)) {
+    header("Location: ./realizad.php");
+} else {
+    echo("Error");
+}
+}
+mysqli_close($conexion);
+?>
