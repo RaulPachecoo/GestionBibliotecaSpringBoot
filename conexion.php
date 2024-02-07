@@ -1,16 +1,17 @@
 <?php 
 
-/*Aqui me conecto a mi base de datos, para saber el host, el usuario y la contraseña lo podemos ver en php myadmin*/
 $host = "localhost";
 $usuario = "root";
 $contraseña ="";
 $bd = "accesoDatos";
 $dsn = "mysql:host=$host;dbname=$bd";
 
-try{/*Establece la conexion dentro de este try/catch */
+try {
+    /* Establecer la conexión utilizando PDO */
     $conexion = new PDO($dsn, $usuario, $contraseña);
-  
-}catch(PDOException $error){
-    echo $error->getMessage();/*Si falla mostrará un mensaje de error */
-    
+    /* Establecer el modo de errores de PDO a excepciones */
+    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $error) {
+    /* Mostrar mensaje de error si la conexión falla */
+    echo "Error de conexión: " . $error->getMessage();
 }

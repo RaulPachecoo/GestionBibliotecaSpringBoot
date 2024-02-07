@@ -68,27 +68,25 @@
 <?php
 session_start();
 require "conexion.php";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-$usuario = $_POST["usuario"];
-$password = $_POST["password"];
-$_SESSION['usuario'] = $usuario;
-$_SESSION['password'] = $password;
+    $usuario = $_POST["usuario"];
+    $password = $_POST["password"];
+    $_SESSION['usuario'] = $usuario;
+    $_SESSION['password'] = $password;
 
+    
+    // Utilizar una consulta preparada para evitar la inyección de SQL
+    $sql = "SELECT * FROM accesoDatos WHERE usuario = ? AND password = ?";
+    $stmt = $conexion->prepare($sql);
+    $stmt->execute([$usuario, $password]);
 
-$conexion = mysqli_connect("localhost", "root", "", "accesoDatos");
-
-if (!$conexion) {
-    die("Error de conexión: " . mysqli_connect_error());
+    // Verificar si se encontraron resultados
+    if ($stmt->rowCount() > 0) {
+        header("Location: ./realizad.php");
+        exit; // Salir del script después de redireccionar
+    } else {
+        echo "Error: Usuario o contraseña incorrectos";
+    }
 }
-
-$sql = "SELECT * FROM accesoDatos WHERE usuario = '$usuario' AND password = '$password'";
-$resultado = mysqli_query($conexion, $sql);
-
-if ($fila = mysqli_fetch_assoc($resultado)) {
-    header("Location: ./realizad.php");
-} else {
-    echo("Error");
-}
-}
-mysqli_close($conexion);
 ?>

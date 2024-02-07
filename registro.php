@@ -8,38 +8,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['usuario'] = $usuario;
     $_SESSION['password'] = $password;
 
-    $conexion = mysqli_connect("localhost", "root", "", "accesoDatos");
-
-    if (!$conexion) {
-        die("Error de conexión: " . mysqli_connect_error());
-    }
-
     // Utilizar una consulta preparada para evitar la inyección de SQL
     $sql = "INSERT INTO accesoDatos (usuario, password) VALUES (?, ?)";
-    $stmt = mysqli_prepare($conexion, $sql);
+    $stmt = $conexion->prepare($sql);
 
-    if ($stmt) {
-        // Liga los parámetros y ejecuta la sentencia preparada
-        mysqli_stmt_bind_param($stmt, "ss", $usuario, $password);
-        $resultado = mysqli_stmt_execute($stmt);
-
-        if ($resultado) {
-            echo "Usuario registrado correctamente";
-            header("Location: ./realizad.php");
-            // Puedes redirigir a la página principal u otra página después del registro
-        } else {
-            echo "Error en el registro";
-        }
-
-        // Cierra la sentencia preparada
-        mysqli_stmt_close($stmt);
-    } else {
-        echo "Error en la preparación de la sentencia";
+    try {
+        $stmt->execute([$usuario, $password]);
+        echo "Usuario registrado correctamente";
+        header("Location: ./realizad.php");
+        exit; // Salir del script después de redireccionar
+    } catch (PDOException $error) {
+        echo "Error en el registro: " . $error->getMessage();
     }
-
-    mysqli_close($conexion);
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -72,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <hr>
             <div class="pie-form">
-                <a href="login.php">« Volver</a>
+                <a href="./login.php">« Volver</a>
             </div>
         </div>
     </div>
