@@ -1,0 +1,69 @@
+package com.example.bibliotecaspringboot.models.entities;
+
+import jakarta.persistence.*;
+
+import java.sql.Timestamp;
+import java.util.Objects;
+
+@Entity
+@Table(name = "prestamos", schema = "BIBLIOTECA")
+public class EntidadPrestamos {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "idPrestamo", nullable = false)
+    private int idPrestamo;
+    @Basic
+    @Column(name = "fechaPrestamo", nullable = true)
+    private Timestamp fechaPrestamo;
+    @ManyToOne
+    @JoinColumn(name = "idLibro", referencedColumnName = "id")
+    private EntidadLibro libro;
+    @ManyToOne
+    @JoinColumn(name = "idUsuario", referencedColumnName = "id")
+    private EntidadUsuario usuarioByIdUsuario;
+
+    public int getIdPrestamo() {
+        return idPrestamo;
+    }
+
+    public void setIdPrestamo(int idPrestamo) {
+        this.idPrestamo = idPrestamo;
+    }
+
+    public Timestamp getFechaPrestamo() {
+        return fechaPrestamo;
+    }
+
+    public void setFechaPrestamo(Timestamp fechaPrestamo) {
+        this.fechaPrestamo = fechaPrestamo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EntidadPrestamos that = (EntidadPrestamos) o;
+        return idPrestamo == that.idPrestamo && Objects.equals(fechaPrestamo, that.fechaPrestamo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idPrestamo, fechaPrestamo);
+    }
+
+    public EntidadLibro getLibro() {
+        return libro;
+    }
+
+    public void setLibro(EntidadLibro libro) {
+        this.libro = libro;
+    }
+
+    public EntidadUsuario getUsuarioByIdUsuario() {
+        return usuarioByIdUsuario;
+    }
+
+    public void setUsuarioByIdUsuario(EntidadUsuario usuarioByIdUsuario) {
+        this.usuarioByIdUsuario = usuarioByIdUsuario;
+    }
+}
