@@ -1,0 +1,11 @@
+C:\Users\Raúl\OneDrive\Documentos\AccesoADatos\BibliotecaSpringBoot\RaulPachecoo-GestionBibliotecaSpringBoot\src\main\java\com\example\bibliotecaspringboot\models\repositories\IRepositorioCategoria.java
+C:\Users\Raúl\OneDrive\Documentos\AccesoADatos\BibliotecaSpringBoot\RaulPachecoo-GestionBibliotecaSpringBoot\src\main\java\com\example\bibliotecaspringboot\models\repositories\IRepositorioLibro.java
+C:\Users\Raúl\OneDrive\Documentos\AccesoADatos\BibliotecaSpringBoot\RaulPachecoo-GestionBibliotecaSpringBoot\src\main\java\com\example\bibliotecaspringboot\BibliotecaSpringBootApplication.java
+C:\Users\Raúl\OneDrive\Documentos\AccesoADatos\BibliotecaSpringBoot\RaulPachecoo-GestionBibliotecaSpringBoot\src\main\java\com\example\bibliotecaspringboot\models\entities\EntidadCategoria.java
+C:\Users\Raúl\OneDrive\Documentos\AccesoADatos\BibliotecaSpringBoot\RaulPachecoo-GestionBibliotecaSpringBoot\src\main\java\com\example\bibliotecaspringboot\controllers\ControladorPrestamo.java
+C:\Users\Raúl\OneDrive\Documentos\AccesoADatos\BibliotecaSpringBoot\RaulPachecoo-GestionBibliotecaSpringBoot\src\main\java\com\example\bibliotecaspringboot\models\entities\EntidadHistorico.java
+C:\Users\Raúl\OneDrive\Documentos\AccesoADatos\BibliotecaSpringBoot\RaulPachecoo-GestionBibliotecaSpringBoot\src\main\java\com\example\bibliotecaspringboot\models\repositories\IRepositorioUsuario.java
+C:\Users\Raúl\OneDrive\Documentos\AccesoADatos\BibliotecaSpringBoot\RaulPachecoo-GestionBibliotecaSpringBoot\src\main\java\com\example\bibliotecaspringboot\models\repositories\IRepositorioPrestamo.java
+C:\Users\Raúl\OneDrive\Documentos\AccesoADatos\BibliotecaSpringBoot\RaulPachecoo-GestionBibliotecaSpringBoot\src\main\java\com\example\bibliotecaspringboot\models\entities\EntidadLibro.java
+C:\Users\Raúl\OneDrive\Documentos\AccesoADatos\BibliotecaSpringBoot\RaulPachecoo-GestionBibliotecaSpringBoot\src\main\java\com\example\bibliotecaspringboot\models\entities\EntidadUsuario.java
+C:\Users\Raúl\OneDrive\Documentos\AccesoADatos\BibliotecaSpringBoot\RaulPachecoo-GestionBibliotecaSpringBoot\src\main\java\com\example\bibliotecaspringboot\models\entities\EntidadPrestamo.java
