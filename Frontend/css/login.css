@@ -227,5 +227,8 @@ hr {
         text-align: left;
     }
 }
+.errorUsuario {
+    color: red;
+}
 /* ajustar a pantallas con ancho menor o igual a 775px; */
 /* ajustar a pantallas con ancho menor o igual a 775px; */

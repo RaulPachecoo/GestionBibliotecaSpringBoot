@@ -1,3 +1,30 @@
+<?php
+session_start();
+require "conexion.php";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $usuario = $_POST["usuario"];
+    $password = $_POST["password"];
+    $_SESSION['usuario'] = $usuario;
+    $_SESSION['password'] = $password;
+
+    
+    // Utilizar una consulta preparada para evitar la inyección de SQL
+    $sql = "SELECT * FROM accesoDatos WHERE usuario = ? AND password = ?";
+    $stmt = $conexion->prepare($sql);
+    $stmt->execute([$usuario, $password]);
+
+    // Verificar si se encontraron resultados
+    if ($stmt->rowCount() > 0) {
+        header("Location: ./pPrincipal.php");
+        exit; // Salir del script después de redireccionar
+    } else {
+        //echo "<script>alert('Error: Usuario o contraseña incorrectos');</script>";
+        $error = "Usuario o contraseña incorrectos";
+    }
+}
+?>
+
 <!-- Define que el documento esta bajo el estandar de HTML 5 -->
 <!doctype html>
 
@@ -43,7 +70,12 @@
                         <input id="password" type="password" placeholder="Contraseña" name="password" required>
                         
                         <button type="submit" title="Ingresar" name="Ingresar">Login</button>
+                        
                     </form>
+                    <div>
+                            <p class="errorUsuario"><?php echo $error; ?></p>
+                            
+                        </div>
                     
                 </div>
                 
@@ -66,28 +98,3 @@
 </html>
 
 
-<?php
-session_start();
-require "conexion.php";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuario = $_POST["usuario"];
-    $password = $_POST["password"];
-    $_SESSION['usuario'] = $usuario;
-    $_SESSION['password'] = $password;
-
-    
-    // Utilizar una consulta preparada para evitar la inyección de SQL
-    $sql = "SELECT * FROM accesoDatos WHERE usuario = ? AND password = ?";
-    $stmt = $conexion->prepare($sql);
-    $stmt->execute([$usuario, $password]);
-
-    // Verificar si se encontraron resultados
-    if ($stmt->rowCount() > 0) {
-        header("Location: ./pPrincipal.php");
-        exit; // Salir del script después de redireccionar
-    } else {
-        echo "Error: Usuario o contraseña incorrectos";
-    }
-}
-?>
