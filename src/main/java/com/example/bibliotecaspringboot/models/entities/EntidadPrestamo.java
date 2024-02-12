@@ -1,5 +1,6 @@
 package com.example.bibliotecaspringboot.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
@@ -9,16 +10,18 @@ import java.sql.Timestamp;
 public class EntidadPrestamo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "idPrestamo", nullable = false)
+    @Column(name = "id_prestamo", nullable = false)
     private int idPrestamo;
     @Basic
-    @Column(name = "fechaPrestamo", nullable = true)
+    @Column(name = "fecha_prestamo", nullable = true)
     private Timestamp fechaPrestamo;
     @ManyToOne
-    @JoinColumn(name = "idLibro", referencedColumnName = "id")
+    @JoinColumn(name = "id_libro", referencedColumnName = "id")
+    @JsonIgnoreProperties("listaPrestamos")
     private EntidadLibro libro;
     @ManyToOne
-    @JoinColumn(name = "idUsuario", referencedColumnName = "id")
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id")
+    @JsonIgnoreProperties("listaPrestamos")
     private EntidadUsuario usuario;
 
     public int getIdPrestamo() {
