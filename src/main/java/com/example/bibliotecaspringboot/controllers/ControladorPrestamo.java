@@ -57,7 +57,7 @@ public class ControladorPrestamo {
             EntidadPrestamo prestamo = prestamoOpt.get();
             prestamo.setFechaPrestamo(nuevoPrestamo.getFechaPrestamo());
             prestamo.setLibro(nuevoPrestamo.getLibro());
-            prestamo.setUsuarioByIdUsuario(nuevoPrestamo.getUsuarioByIdUsuario());
+            prestamo.setUsuario(nuevoPrestamo.getUsuario());
             prestamoRepositorio.save(prestamo);
             return ResponseEntity.ok().body("Actualizado");
         } else {
