@@ -2,7 +2,6 @@ package com.example.bibliotecaspringboot.controllers;
 
 
 import com.example.bibliotecaspringboot.models.entities.EntidadLibro;
-import com.example.bibliotecaspringboot.models.entities.EntidadPrestamo;
 import com.example.bibliotecaspringboot.models.repositories.IRepositorioLibro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -61,7 +60,7 @@ public class ControladorLibro {
             libro.setNombre(nuevoLibro.getNombre());
             libro.setEditorial(nuevoLibro.getEditorial());
             libro.setCategoria(nuevoLibro.getCategoria());
-            libro.setPrestamosById(nuevoLibro.getPrestamosById());
+            //libro.getListaPrestamos(nuevoLibro.getListaPrestamos());
 
 
             libroRepositorio.save(libro);

@@ -1,9 +1,9 @@
 package com.example.bibliotecaspringboot.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.Collection;
-import java.util.Objects;
 
 @Entity
 @Table(name = "usuario", schema = "BIBLIOTECA")
@@ -18,8 +18,9 @@ public class EntidadUsuario {
     @Basic
     @Column(name = "apellidos", nullable = true, length = -1)
     private String apellidos;
-    @OneToMany(mappedBy = "usuarioByIdUsuario")
-    private Collection<EntidadPrestamo> prestamosById;
+    @OneToMany(mappedBy = "usuario")
+    @JsonIgnoreProperties("usuario")
+    private Collection<EntidadPrestamo> listaPrestamos;
 
     public int getId() {
         return id;
@@ -49,20 +50,29 @@ public class EntidadUsuario {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         EntidadUsuario that = (EntidadUsuario) o;
-        return id == that.id && Objects.equals(nombre, that.nombre) && Objects.equals(apellidos, that.apellidos);
+
+        if (id != that.id) return false;
+        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
+        if (apellidos != null ? !apellidos.equals(that.apellidos) : that.apellidos != null) return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, apellidos);
+        int result = id;
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        result = 31 * result + (apellidos != null ? apellidos.hashCode() : 0);
+        return result;
     }
 
-    public Collection<EntidadPrestamo> getPrestamosById() {
-        return prestamosById;
+    public Collection<EntidadPrestamo> getListaPrestamos() {
+        return listaPrestamos;
     }
 
-    public void setPrestamosById(Collection<EntidadPrestamo> prestamosById) {
-        this.prestamosById = prestamosById;
+    public void setListaPrestamos(Collection<EntidadPrestamo> prestamosById) {
+        this.listaPrestamos = prestamosById;
     }
 }
