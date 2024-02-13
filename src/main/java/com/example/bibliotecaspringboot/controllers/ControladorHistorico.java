@@ -31,8 +31,8 @@ public class ControladorHistorico {
     }
 
     // Buscar un préstamo por su ID
-    @GetMapping("/{idHistorico}")
-    public ResponseEntity<EntidadHistorico> buscarHistoricoPorId(@PathVariable(value = "idHistorico") int idHistorico) {
+    @GetMapping("/{id_historico}")
+    public ResponseEntity<EntidadHistorico> buscarHistoricoPorId(@PathVariable(value = "id_historico") int idHistorico) {
         Optional<EntidadHistorico> historico = historicoRepositorio.findById(idHistorico);
         return historico.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
