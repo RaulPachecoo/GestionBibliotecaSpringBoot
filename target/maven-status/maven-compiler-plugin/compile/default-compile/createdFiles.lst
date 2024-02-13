@@ -1,1 +1,3 @@
+com\example\bibliotecaspringboot\controllers\ControladorHistorico.class
+com\example\bibliotecaspringboot\models\repositories\IRepositorioHistorico.class
 com\example\bibliotecaspringboot\controllers\ControladorLibro.class
