@@ -1,8 +1,9 @@
 package com.example.bibliotecaspringboot.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
-import java.util.Objects;
+import java.util.Collection;
 
 @Entity
 @Table(name = "categoria", schema = "BIBLIOTECA")
@@ -14,6 +15,9 @@ public class EntidadCategoria {
     @Basic
     @Column(name = "categoria", nullable = true, length = -1)
     private String categoria;
+    @OneToMany(mappedBy = "categoria")
+    @JsonIgnoreProperties("categoria")
+    private Collection<EntidadLibro> listaLibros;
 
     public int getId() {
         return id;
@@ -35,12 +39,27 @@ public class EntidadCategoria {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         EntidadCategoria that = (EntidadCategoria) o;
-        return id == that.id && Objects.equals(categoria, that.categoria);
+
+        if (id != that.id) return false;
+        if (categoria != null ? !categoria.equals(that.categoria) : that.categoria != null) return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, categoria);
+        int result = id;
+        result = 31 * result + (categoria != null ? categoria.hashCode() : 0);
+        return result;
+    }
+
+    public Collection<EntidadLibro> getListaLibros() {
+        return listaLibros;
+    }
+
+    public void setListaLibros(Collection<EntidadLibro> listaLibros) {
+        this.listaLibros = listaLibros;
     }
 }

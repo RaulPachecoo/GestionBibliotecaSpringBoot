@@ -1,26 +1,28 @@
 package com.example.bibliotecaspringboot.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
-import java.util.Objects;
 
 @Entity
 @Table(name = "prestamos", schema = "BIBLIOTECA")
 public class EntidadPrestamo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "idPrestamo", nullable = false)
+    @Column(name = "id_prestamo", nullable = false)
     private int idPrestamo;
     @Basic
-    @Column(name = "fechaPrestamo", nullable = true)
+    @Column(name = "fecha_prestamo", nullable = true)
     private Timestamp fechaPrestamo;
     @ManyToOne
-    @JoinColumn(name = "idLibro", referencedColumnName = "id")
+    @JoinColumn(name = "id_libro", referencedColumnName = "id")
+    @JsonIgnoreProperties("listaPrestamos")
     private EntidadLibro libro;
     @ManyToOne
-    @JoinColumn(name = "idUsuario", referencedColumnName = "id")
-    private EntidadUsuario usuarioByIdUsuario;
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id")
+    @JsonIgnoreProperties("listaPrestamos")
+    private EntidadUsuario usuario;
 
     public int getIdPrestamo() {
         return idPrestamo;
@@ -42,13 +44,21 @@ public class EntidadPrestamo {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         EntidadPrestamo that = (EntidadPrestamo) o;
-        return idPrestamo == that.idPrestamo && Objects.equals(fechaPrestamo, that.fechaPrestamo);
+
+        if (idPrestamo != that.idPrestamo) return false;
+        if (fechaPrestamo != null ? !fechaPrestamo.equals(that.fechaPrestamo) : that.fechaPrestamo != null)
+            return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idPrestamo, fechaPrestamo);
+        int result = idPrestamo;
+        result = 31 * result + (fechaPrestamo != null ? fechaPrestamo.hashCode() : 0);
+        return result;
     }
 
     public EntidadLibro getLibro() {
@@ -59,11 +69,11 @@ public class EntidadPrestamo {
         this.libro = libro;
     }
 
-    public EntidadUsuario getUsuarioByIdUsuario() {
-        return usuarioByIdUsuario;
+    public EntidadUsuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuarioByIdUsuario(EntidadUsuario usuarioByIdUsuario) {
-        this.usuarioByIdUsuario = usuarioByIdUsuario;
+    public void setUsuario(EntidadUsuario usuario) {
+        this.usuario = usuario;
     }
 }

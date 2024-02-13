@@ -1,9 +1,9 @@
 package com.example.bibliotecaspringboot.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.Collection;
-import java.util.Objects;
 
 @Entity
 @Table(name = "libro", schema = "BIBLIOTECA")
@@ -21,12 +21,13 @@ public class EntidadLibro {
     @Basic
     @Column(name = "editorial", nullable = true, length = -1)
     private String editorial;
-
     @ManyToOne
     @JoinColumn(name = "categoria", referencedColumnName = "id")
+    @JsonIgnoreProperties("listaLibros")
     private EntidadCategoria categoria;
     @OneToMany(mappedBy = "libro")
-    private Collection<EntidadPrestamo> prestamosById;
+    @JsonIgnoreProperties("libro")
+    private Collection<EntidadPrestamo> listaPrestamos;
 
     public int getId() {
         return id;
@@ -60,6 +61,30 @@ public class EntidadLibro {
         this.editorial = editorial;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        EntidadLibro that = (EntidadLibro) o;
+
+        if (id != that.id) return false;
+        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
+        if (autor != null ? !autor.equals(that.autor) : that.autor != null) return false;
+        if (editorial != null ? !editorial.equals(that.editorial) : that.editorial != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        result = 31 * result + (autor != null ? autor.hashCode() : 0);
+        result = 31 * result + (editorial != null ? editorial.hashCode() : 0);
+        return result;
+    }
+
     public EntidadCategoria getCategoria() {
         return categoria;
     }
@@ -68,26 +93,11 @@ public class EntidadLibro {
         this.categoria = categoria;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        EntidadLibro that = (EntidadLibro) o;
-        return id == that.id && Objects.equals(nombre, that.nombre) && Objects.equals(autor, that.autor) && Objects.equals(editorial, that.editorial) && Objects.equals(categoria, that.categoria);
+    public Collection<EntidadPrestamo> getListaPrestamos() {
+        return listaPrestamos;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nombre, autor, editorial, categoria);
-    }
-
-
-
-    public Collection<EntidadPrestamo> getPrestamosById() {
-        return prestamosById;
-    }
-
-    public void setPrestamosById(Collection<EntidadPrestamo> prestamosById) {
-        this.prestamosById = prestamosById;
+    public void setListaPrestamos(Collection<EntidadPrestamo> listaPrestamos) {
+        this.listaPrestamos = listaPrestamos;
     }
 }

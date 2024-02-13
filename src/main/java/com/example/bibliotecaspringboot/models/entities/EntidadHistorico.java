@@ -3,7 +3,6 @@ package com.example.bibliotecaspringboot.models.entities;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
-import java.util.Objects;
 
 @Entity
 @Table(name = "historico", schema = "BIBLIOTECA")
@@ -58,12 +57,23 @@ public class EntidadHistorico {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         EntidadHistorico that = (EntidadHistorico) o;
-        return idHistorico == that.idHistorico && Objects.equals(user, that.user) && Objects.equals(fecha, that.fecha) && Objects.equals(info, that.info);
+
+        if (idHistorico != that.idHistorico) return false;
+        if (user != null ? !user.equals(that.user) : that.user != null) return false;
+        if (fecha != null ? !fecha.equals(that.fecha) : that.fecha != null) return false;
+        if (info != null ? !info.equals(that.info) : that.info != null) return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idHistorico, user, fecha, info);
+        int result = idHistorico;
+        result = 31 * result + (user != null ? user.hashCode() : 0);
+        result = 31 * result + (fecha != null ? fecha.hashCode() : 0);
+        result = 31 * result + (info != null ? info.hashCode() : 0);
+        return result;
     }
 }
