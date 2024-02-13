@@ -1,0 +1,15 @@
+public class CategoriaDTO{
+    private int id;
+
+    private String categoria;
+
+    public CategoriaDTO(int id, string categoria){
+        this.id = id;
+        this.categoria=categoria
+    }
+}
+class Prueba{
+    public static void main(string[] args){
+        CategoriaDTO categoriaDTO = new CategoriaDTO(15,"Hoola");
+    }
+}
