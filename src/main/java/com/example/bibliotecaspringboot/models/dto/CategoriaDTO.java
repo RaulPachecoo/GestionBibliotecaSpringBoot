@@ -1,15 +1,15 @@
 package com.example.bibliotecaspringboot.models.dto;
 
 public class CategoriaDTO {
-    int id;
-    String categoria;
+    private int idCategoria;
+    private String categoria;
 
-    public int getId() {
-        return id;
+    public int getIdCategoria() {
+        return idCategoria;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdCategoria(int idCategoria) {
+        this.idCategoria = idCategoria;
     }
 
     public String getCategoria() {
