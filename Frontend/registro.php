@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         <div id="derecho">
             <div class="titulo">
-                Página de Registro
+                Gracias por Registrarte 
             </div>
         </div>
     </div>
