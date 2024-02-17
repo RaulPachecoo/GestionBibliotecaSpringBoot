@@ -2,8 +2,13 @@
 
 $host = "localhost";
 $usuario = "root";
+
 $contraseña ="";
 $bd = "accesodatos";
+=======
+$contraseña ="daw78243571D";
+$bd = "accesoDatos";
+
 $dsn = "mysql:host=$host;dbname=$bd";
 
 try {
