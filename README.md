@@ -1,6 +1,6 @@
-# RaulPachecoo-GestionBibliotecaSpringBoot
+# GestionBibliotecaSpringBoot
 
-# Índice
+## Índice
 
 1. [**INTRODUCCIÓN**](#introducción)
    - Objetivo del proyecto
@@ -8,7 +8,7 @@
 
 2. [**CONEXIÓN A LA BASE DE DATOS**](#conexión-a-la-base-de-datos)
    - Configuración de la conexión
-   - Imagen: Conexión a la base de datos
+   - ![Imagen: Conexión a la base de datos](https://files.catbox.moe/v1z0vp.png)
 
 3. [**ENTIDADES**](#entidades)
    - Generación automática con JPA
@@ -90,10 +90,14 @@ La interfaz consiste en una pantalla destinada a realizar el inicio de sesión e
 
 ![Texto alternativo](https://files.catbox.moe/2b3mtk.png)
 
+![Texto alternativo](https://files.catbox.moe/84j9zj.png)
+
 ### **PANTALLA PRINCIPAL**
 Esta pantalla solamente contiene el menú de navegación para moverse por las distintas tablas y un botón para cerrar sesión.
 
 ![Texto alternativo](https://files.catbox.moe/wjics4.png)
+
+![Texto alternativo](https://files.catbox.moe/usvi0j.png)
 
 ### **PANTALLAS DE LECTURA**
 Estas pantallas contienen la información de las distintas tablas, préstamos, libros…
@@ -106,6 +110,8 @@ Estas pantallas contienen la información de las distintas tablas, préstamos, l
 
 ![Texto alternativo](https://files.catbox.moe/1xy8jz.png)
 
+![Texto alternativo](https://files.catbox.moe/nx8r8x.png)
+
 ### **FORMULARIOS DE INSERCIÓN Y ACTUALIZACIÓN**
 Formularios para insertar y modificar los datos de una fila en la base de datos.
 
@@ -116,6 +122,10 @@ Formularios para insertar y modificar los datos de una fila en la base de datos.
 ![Texto alternativo](https://files.catbox.moe/0i88rn.png)
 
 ![Texto alternativo](https://files.catbox.moe/btv8ub.png)
+
+![Texto alternativo](https://files.catbox.moe/r9nll9.png)
+
+![Texto alternativo](https://files.catbox.moe/p6erbw.png)
 
 ### **MÉTODOS CRUD**
 Métodos utilizados para realizar las peticiones al servicio de API REST al realizar las operaciones CRUD. Cada tabla tiene unos métodos propios para insertar, borrar y actualizar. Este es un ejemplo, de los métodos utilizados para las operaciones con la tabla Libro.
