@@ -1,5 +1,4 @@
 <?php
-global $conexion;
 session_start();
 require "conexion.php";
 

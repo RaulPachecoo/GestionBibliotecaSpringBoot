@@ -2,9 +2,10 @@
 session_start();
 
 // Verificar si se recibió el ID de la categoría y el nombre de la categoría desde el formulario
-if(isset($_POST['id']) && isset($_POST['categoria'])){
-    $id = $_POST['id'];
+if(isset($_SESSION['id']) && isset($_POST['categoria'])){
+    $id = $_SESSION['id'];
     $categoria = $_POST['categoria'];
+    //echo " $id $categoria ";
 
     // Datos a enviar en el cuerpo de la solicitud PUT
     $datos = array("categoria" => $categoria);
