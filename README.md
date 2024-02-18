@@ -11,6 +11,18 @@ Hemos realizado la conexión a la base de datos utilizando el fichero applicatio
 
 ## **ENTIDADES**
 Una vez configurada la conexión con la base de datos, las entidades han sido generadas automáticamente con anotaciones JPA. Estas entidades contienen solamente los atributos de cada tabla y los métodos getters y setters. Para las relaciones entre tablas hemos utilizado listas y objetos apropiadamente.
+
+![Texto alternativo](https://files.catbox.moe/c7cga1.png)
+
+![Texto alternativo](https://files.catbox.moe/dr0mb0.png)
+
+![Texto alternativo](https://files.catbox.moe/pucpho.png)
+
+![Texto alternativo](https://files.catbox.moe/t96kh0.png)
+
+![Texto alternativo](https://files.catbox.moe/r80fkj.png)
+
+
 ## **REPOSITORIOS**
 Los repositorios son interfaces vacías que extienden de la interfaz CrudRepository proporcionada por Spring Data, que incluye métodos para operaciones CRUD (Crear, Leer, Borrar y Actualizar). Es decir estos repositorios contienen métodos predefinidos que nos facilitan el trabajo a la hora de trabajar con bases de datos.
 ## **CONTROLADORES**
