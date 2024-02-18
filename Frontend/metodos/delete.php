@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-if(isset($_SESSION['id']) && isset($_SESSION['tipo'])){
-    $id = $_SESSION['id'];
-    $tipo = $_SESSION['tipo'];
+if(isset($_GET['id']) && isset($_GET['tipo'])){
+    $id = $_GET['id'];
+    $tipo = $_GET['tipo'];
     // URL del endpoint para eliminar usuarios
     $url = 'http://localhost:8080/BIBLIOTECA/' . $tipo . '/' . $id; // Corrige la concatenación del id
 

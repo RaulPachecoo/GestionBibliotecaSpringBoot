@@ -32,7 +32,7 @@ $nombre = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : "hola";
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="./Tablas/categorias.php">Categoria </a>
+                <a class="nav-item nav-link active" href="./Tablas/categorias.php" id="menuCategoria">Categoria </a>
                 <a class="nav-item nav-link active" href="#">Libro </a>
                 <a class="nav-item nav-link active" href="#">Prestamo </a>
                 <a class="nav-item nav-link active" href="#">Usuario </a>

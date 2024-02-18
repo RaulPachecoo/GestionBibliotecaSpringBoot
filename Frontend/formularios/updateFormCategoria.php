@@ -34,8 +34,8 @@
     </style>
 </head>
 <?php session_start();
-$id = $_SESSION['id'];
-$categoria = $_SESSION['categoria'];?>
+$id = $_GET['id'];
+$categoria = $_GET['categoria'];?>
 <body>
 <div class="container">
         <h1>Formulario de Categoría</h1>
