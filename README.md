@@ -6,7 +6,7 @@ El objetivo de este proyecto es realizar un microservicio API REST con el framew
 Hemos realizado la organización del trabajo utilizando metodologías ágiles, en concreto la metodología SCRUM. Para ello hemos utilizado la herramienta ClickUp y hemos designado un SCRUM Manager que ha sido Raúl. En las diferentes reuniones realizadas en clase hemos debatido la partición del trabajo y posteriormente cada uno ha trabajado individualmente en la tarea que se le asignó.
 ## **CONEXIÓN A LA BASE DE DATOS**
 Hemos realizado la conexión a la base de datos utilizando el fichero application.propertis, que contiene la información necesaria para configurar esta conexión.
-!([ruta/a/la/imagen.png](https://files.catbox.moe/v1z0vp.png))
+!(https://files.catbox.moe/v1z0vp.png)
 ## **ENTIDADES**
 Una vez configurada la conexión con la base de datos, las entidades han sido generadas automáticamente con anotaciones JPA. Estas entidades contienen solamente los atributos de cada tabla y los métodos getters y setters. Para las relaciones entre tablas hemos utilizado listas y objetos apropiadamente.
 ## **REPOSITORIOS**
