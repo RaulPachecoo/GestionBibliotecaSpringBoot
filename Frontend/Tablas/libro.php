@@ -39,7 +39,7 @@ require_once('../navBar.php');
 </head>
 <body>
   <br>
-<a href="../pPrincipal.php"><button class="btn btn-primary">Atrás</button></a>
+
 <?php
 
 $url = "http://localhost:8080/BIBLIOTECA/libro";

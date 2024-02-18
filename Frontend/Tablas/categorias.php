@@ -15,6 +15,8 @@ require_once('../navBar.php');
 
 
     <style>
+
+       
        table{
 
 
@@ -41,7 +43,6 @@ require_once('../navBar.php');
 </head>
 <body>
   <br>
-<a href="../pPrincipal.php"><button class="btn btn-primary">Atrás</button></a>
 <?php
 
 $url = "http://localhost:8080/BIBLIOTECA/categoria";
@@ -73,7 +74,7 @@ $obj = json_decode($json);//Convierte un string codificado en JSON a una variabl
   <tr>
     <td><?php echo $ob -> id; ?></td>
     <td><?php echo $ob -> categoria; ?></td>
-    <td><a href="../formularios/updateFormCategoria.php?id=<?php echo $ob->id; ?>"><button><img src="https://cdn-icons-png.flaticon.com/256/45/45706.png" class="icono"/></button></a><a href="../metodos/delete.php"><button><img src="https://cdn-icons-png.flaticon.com/256/4265/4265064.png" class="icono"/><?php $_SESSION["id"] = $ob -> id; $_SESSION["tipo"]= "categoria"?></button></a> </td>
+    <td> <a href="../formularios/updateFormCategoria.php?id=<?php echo $ob->id; ?>&categoria=<?php echo $ob->categoria; ?>"><button><img src="https://cdn-icons-png.flaticon.com/256/45/45706.png" class="icono"/></button></a><a href="../metodos/delete.php?id=<?php echo $ob->id; ?>&tipo=categoria"><button><img src="https://cdn-icons-png.flaticon.com/256/4265/4265064.png" class="icono"/></button></a> </td>
 
   </tr>
   <?php endforeach; ?>

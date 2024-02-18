@@ -1,3 +1,7 @@
+<?php
+require_once('../navBar.php');
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +29,6 @@
 </head>
 <body>
 <br>
-<a href="../pPrincipal.php"><button class="btn btn-primary">Atrás</button></a>
 
 <?php
 $url = "http://localhost:8080/BIBLIOTECA/prestamos";
@@ -36,37 +39,40 @@ $obj = json_decode($json);
 <h1>Préstamos</h1><hr>
 
 <div class="contenedor_tabla">
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Fecha de Préstamo</th>
-            <th scope="col">Libro</th>
-            <th scope="col">Usuario</th>
-            <th scope="col">Acciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($obj as $ob): ?>
+    <?php if (!empty($obj)): ?>
+        <table class="table table-striped">
+            <thead>
             <tr>
-                <td><?php echo $ob -> idPrestamo; ?></td>
-                <!-- Formatear la fecha en el formato deseado -->
-                <td><?php echo date('d/m/Y', strtotime($ob -> fechaPrestamo)); ?></td>
-                <td><?php echo $ob->libro->nombre; ?></td>
-                <td><?php echo $ob->usuario->nombre; ?></td>
-                <td>
-                    <a href="../formularios/updateFormPrestamo.php?id=<?php echo $ob->idPrestamo; ?>">
-                        <button><img src="https://cdn-icons-png.flaticon.com/256/45/45706.png" class="icono"/></button>
-                    </a>
-                    <a href="../metodos/deletePrestamo.php?id=<?php echo $ob->idPrestamo; ?>">
-                        <button><img src="https://cdn-icons-png.flaticon.com/256/4265/4265064.png" class="icono"/></button>
-                    </a>
-                </td>
-
+                <th scope="col">ID</th>
+                <th scope="col">Fecha de Préstamo</th>
+                <th scope="col">Libro</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Acciones</th>
             </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            <?php foreach ($obj as $ob): ?>
+                <tr>
+                    <td><?php echo $ob->idPrestamo; ?></td>
+                    <!-- Formatear la fecha en el formato deseado -->
+                    <td><?php echo date('d/m/Y', strtotime($ob->fechaPrestamo)); ?></td>
+                    <td><?php echo $ob->libro->nombre; ?></td>
+                    <td><?php echo $ob->usuario->nombre; ?></td>
+                    <td>
+                        <a href="../formularios/updateFormPrestamo.php?id=<?php echo $ob->idPrestamo; ?>">
+                            <button><img src="https://cdn-icons-png.flaticon.com/256/45/45706.png" class="icono"/></button>
+                        </a>
+                        <a href="../metodos/deletePrestamo.php?id=<?php echo $ob->idPrestamo; ?>">
+                            <button><img src="https://cdn-icons-png.flaticon.com/256/4265/4265064.png" class="icono"/></button>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p>No hay préstamos disponibles.</p>
+    <?php endif; ?>
     <a href="../formularios/addFormPrestamo.php"><button class="btn btn-primary">Añadir Préstamo</button></a>
 </div>
 </body>

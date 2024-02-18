@@ -35,14 +35,18 @@ $nombre = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : "hola";
                 <a class="nav-item nav-link active" href="./Tablas/categorias.php">Categoria </a>
                 <a class="nav-item nav-link active" href="./Tablas/libro.php">Libro </a>
                 <a class="nav-item nav-link active" href="./Tablas/prestamos.php">Prestamos </a>
-                <a class="nav-item nav-link active" href="#">Usuario </a>
-
+                <a class="nav-item nav-link active" href="./Tablas/usuario.php">Usuario </a>
             </div>
+        </div>
+        <!-- Mueve el enlace "Atras" aquí para colocarlo al final del navbar -->
+        <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link active" href="../pPrincipal.php">Atras </a>
         </div>
     </nav>
 
 
 </div>
+
 
 <!-- Bootstrap JS y dependencias opcionales -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

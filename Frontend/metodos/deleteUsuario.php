@@ -21,14 +21,14 @@ if(isset($_GET['id']) && isset($_GET['tipo'])){
     if ($response === false) {
         echo 'Error de cURL: ' . curl_error($ch);
     } else {
-        echo 'Categoria eliminada correctamente';
+        echo 'Usuario eliminado correctamente';
     }
 
     // Cerrar la sesión cURL
     curl_close($ch);
 
-    // Redireccionar después de eliminar la categoría
-    header("Location: ../Tablas/categorias.php");
+    // Redireccionar después de eliminar el usuario
+    header("Location: ../Tablas/usuario.php");
     exit();
 } else {
     echo "No se encontró un id de sesión";
