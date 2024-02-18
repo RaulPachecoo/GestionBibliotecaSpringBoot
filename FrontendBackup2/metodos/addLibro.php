@@ -51,4 +51,5 @@ if(isset($_POST['nombre']) && isset($_POST['autor']) && isset($_POST['editorial'
     echo "No se recibieron todos los datos del libro";
     // Manejar el caso en que no se recibieron todos los datos del libro
 }
+
 ?>

@@ -6,7 +6,7 @@
     <title>Editar Libro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
-        body {
+        body{
             display: flex;
             align-items: center;
             justify-content: center;
@@ -14,7 +14,7 @@
             background-position: center;
             background-size: cover;
         }
-        .container {
+        .container{
             margin-top: 50px;
             width: 510px;
             background-color: white;
@@ -27,42 +27,57 @@
 </head>
 <body>
     <div class="container">
-        <h1>Formulario de Libro</h1>
+        <h1>Formulario de Edición de Libro</h1>
         <br>
         <form action="../metodos/updateLibro.php" method="post">
+            <?php
+            // Obtener el ID del libro de la URL
+            $idLibro = $_GET['id'];
+
+            // URL del endpoint para obtener los detalles del libro por ID
+            $url = "http://localhost:8080/BIBLIOTECA/libro/$idLibro";
+            $json = file_get_contents($url);
+            $libro = json_decode($json);
+
+            // Verificar si se obtuvieron los detalles del libro
+            if ($libro) {
+                // Obtener los detalles del libro
+                $nombre = $libro->nombre;
+                $autor = $libro->autor;
+                $editorial = $libro->editorial;
+                $idCategoria = $libro->categoria->id;
+            ?>
+            <!-- Campo oculto para enviar el ID del libro -->
+            <input type="hidden" name="idLibro" value="<?php echo $idLibro; ?>">
+
             <div class="form-group">
-                <label for="nombre">Nombre del Libro</label>
-                <!-- Utilizar un input de tipo text para ingresar el nombre del libro -->
-                <input type="text" class="form-control" id="nombre" name="nombre">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $nombre; ?>">
             </div>
             <div class="form-group">
-                <label for="autor">Autor del Libro</label>
-                <!-- Utilizar un input de tipo text para ingresar el autor del libro -->
-                <input type="text" class="form-control" id="autor" name="autor">
+                <label for="autor">Autor</label>
+                <input type="text" class="form-control" id="autor" name="autor" value="<?php echo $autor; ?>">
             </div>
             <div class="form-group">
-                <label for="editorial">Editorial del Libro</label>
-                <!-- Utilizar un input de tipo text para ingresar la editorial del libro -->
-                <input type="text" class="form-control" id="editorial" name="editorial">
+                <label for="editorial">Editorial</label>
+                <input type="text" class="form-control" id="editorial" name="editorial" value="<?php echo $editorial; ?>">
             </div>
-            <div class="form-group">
-                <label for="categoria">Categoría del Libro</label>
-                <select class="form-control" id="categoria" name="categoria">
-                    <?php
-                    $url = "http://localhost:8080/BIBLIOTECA/categoria";
-                    $json = file_get_contents($url);
-                    $obj = json_decode($json);//Convierte un string codificado en JSON a una variable de PHP.
-                    foreach ($obj as $ob): 
-                    echo "<option value='" . $ob->id . "'>" . $ob -> categoria . "</option>";
-                    endforeach;
-                    ?>
-                </select>
-            </div>
+            <label for="categoria">Categoría</label>
+            <select class="form-control" id="categoria" name="categoria">
+                <!-- Seleccionar la categoría del libro -->
+                <?php
+                $url = "http://localhost:8080/BIBLIOTECA/categoria";
+                $json = file_get_contents($url);
+                $categorias = json_decode($json);
+                foreach ($categorias as $categoria): 
+                    $selected = ($categoria->id == $idCategoria) ? 'selected' : '';
+                    echo "<option value='" . $categoria->id . "' $selected>" . $categoria->categoria . "</option>";
+                endforeach;
+                ?>
+            </select>
+            <?php } ?>
             <br>
-            <!-- Agregar un campo oculto para enviar el ID del libro -->
-            <input type="hidden" name="id" value="<?php echo $id ?>">
-            <!-- Botón para enviar el formulario -->
-            <button type="submit" class="btn btn-primary">Actualizar Libro</button>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
             <br>
         </form>
     </div>

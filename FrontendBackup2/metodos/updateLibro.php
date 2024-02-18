@@ -1,16 +1,15 @@
 <?php
 session_start();
 
-// Verificar si se recibieron los datos del libro desde el formulario
-if(isset($_POST['nombre']) && isset($_POST['autor']) && isset($_POST['editorial']) && isset($_POST['categoria'])){
-    echo 'ha entrado';
-    // Obtener los datos del libro desde el formulario
+// Verificar si se recibió el ID del libro y los datos del libro desde el formulario
+if(isset($_SESSION['id']) && isset($_POST['nombre']) && isset($_POST['autor']) && isset($_POST['editorial']) && isset($_POST['categoria'])){
+    $id = $_SESSION['id'];
     $nombre = $_POST['nombre'];
     $autor = $_POST['autor'];
     $editorial = $_POST['editorial'];
     $categoria = $_POST['categoria'];
 
-    // Datos a enviar en el cuerpo de la solicitud POST
+    // Datos a enviar en el cuerpo de la solicitud PUT
     $datos = array(
         "nombre" => $nombre,
         "autor" => $autor,
@@ -19,14 +18,14 @@ if(isset($_POST['nombre']) && isset($_POST['autor']) && isset($_POST['editorial'
     );
     $datos_string = json_encode($datos);
 
-    // URL del endpoint para crear libros
-    $url = 'http://localhost:8080/BIBLIOTECA/libro';
+    // URL del endpoint para actualizar libros
+    $url = 'http://localhost:8080/BIBLIOTECA/libro/' . $id;
 
     // Inicializar cURL
     $ch = curl_init($url);
 
     // Configurar la solicitud cURL
-    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $datos_string);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -38,17 +37,17 @@ if(isset($_POST['nombre']) && isset($_POST['autor']) && isset($_POST['editorial'
     if ($response === false) {
         echo 'Error de cURL: ' . curl_error($ch);
     } else {
-        echo 'Libro creado correctamente';
+        echo 'Libro actualizado correctamente';
     }
 
     // Cerrar la sesión cURL
     curl_close($ch);
 
-    // Redireccionar después de crear el libro
+    // Redireccionar después de actualizar el libro
     header("Location: ../Tablas/libro.php");
     exit();
 } else {
-    echo "No se recibieron todos los datos del libro";
-    // Manejar el caso en que no se recibieron todos los datos del libro
+    echo "No se recibió el ID del libro y/o los datos del libro desde el formulario";
+    // Manejar el caso en que no se recibió el ID del libro y/o los datos del libro desde el formulario
 }
 ?>

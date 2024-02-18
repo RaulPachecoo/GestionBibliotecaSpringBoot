@@ -1,10 +1,11 @@
 <?php
-if(isset($_GET['id'])){
-    $idLibro = $_GET['id']; // Cambiado de $idPrestamo a $idLibro
-    $tipo = 'libro'; // Tipo de recurso a eliminar
+session_start();
 
-    // URL del endpoint para eliminar préstamos
-    $url = 'http://localhost:8080/BIBLIOTECA/' . $tipo . '/' . $idLibro;
+if(isset($_SESSION['id']) && isset($_SESSION['tipo'])){
+    $id = $_SESSION['id'];
+    $tipo = $_SESSION['tipo'];
+    // URL del endpoint para eliminar usuarios
+    $url = 'http://localhost:8080/BIBLIOTECA/' . $tipo . '/' . $id; // Corrige la concatenación del id
 
     // Inicializar cURL
     $ch = curl_init($url);
@@ -26,11 +27,11 @@ if(isset($_GET['id'])){
     // Cerrar la sesión cURL
     curl_close($ch);
 
-    // Redireccionar después de eliminar el préstamo
+    // Redireccionar después de eliminar la categoría
     header("Location: ../Tablas/libro.php");
     exit();
 } else {
-    echo "No se recibió el ID del libro a eliminar";
-    // Manejar el caso en que no se recibe el ID del préstamo
+    echo "No se encontró un id de sesión";
+    // Manejar el caso en que no hay una sesión válida o un id de sesión
 }
 ?>

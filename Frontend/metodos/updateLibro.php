@@ -1,25 +1,32 @@
 <?php
 session_start();
 
-// Verificar si se recibió el ID del libro y los datos del libro desde el formulario
-if(isset($_SESSION['id']) && isset($_POST['nombre']) && isset($_POST['autor']) && isset($_POST['editorial']) && isset($_POST['categoria'])){
-    $id = $_SESSION['id'];
+if(isset($_POST['nombre']) && isset($_POST['autor']) && isset($_POST['editorial']) && isset($_POST['categoria']) && isset($_POST['idLibro'])){
+    // Recuperar los datos del formulario
     $nombre = $_POST['nombre'];
     $autor = $_POST['autor'];
     $editorial = $_POST['editorial'];
-    $categoria = $_POST['categoria'];
+    $idCategoria = $_POST['categoria'];
+    $idLibro = $_POST['idLibro'];
+    // Obtener el objeto categoria
+    $objetoCategoria = obtenerObjetoCategoria($idCategoria);
 
-    // Datos a enviar en el cuerpo de la solicitud PUT
+    if ($objetoCategoria=== null) {
+        echo "No se encontró la categoria en la base de datos";
+        exit();
+    }
+
+    // Datos del préstamo a enviar en la solicitud POST
     $datos = array(
         "nombre" => $nombre,
         "autor" => $autor,
         "editorial" => $editorial,
-        "categoria" => $categoria
+        "categoria" => $objetoCategoria
     );
     $datos_string = json_encode($datos);
 
-    // URL del endpoint para actualizar libros
-    $url = 'http://localhost:8080/BIBLIOTECA/libro/' . $id;
+    // URL del endpoint para actualizar préstamos
+    $url = 'http://localhost:8080/BIBLIOTECA/libro/' . $idLibro;
 
     // Inicializar cURL
     $ch = curl_init($url);
@@ -43,11 +50,31 @@ if(isset($_SESSION['id']) && isset($_POST['nombre']) && isset($_POST['autor']) &
     // Cerrar la sesión cURL
     curl_close($ch);
 
-    // Redireccionar después de actualizar el libro
+    // Redireccionar después de actualizar el préstamo
     header("Location: ../Tablas/libro.php");
     exit();
 } else {
-    echo "No se recibió el ID del libro y/o los datos del libro desde el formulario";
-    // Manejar el caso en que no se recibió el ID del libro y/o los datos del libro desde el formulario
+    echo "No se recibieron todos los datos necesarios para actualizar el libro";
 }
+
+// Función para obtener el objeto libro a partir del ID
+function obtenerObjetoCategoria($idCategoria) {
+    // URL del endpoint para obtener el objeto categoría por ID
+    $url = "http://localhost:8080/BIBLIOTECA/categoria/$idCategoria";
+
+    // Realizar la solicitud al endpoint
+    $json = file_get_contents($url);
+
+    // Decodificar la respuesta JSON
+    $objetoCategoria = json_decode($json);
+
+    // Verificar si se encontró la categoría
+    if ($objetoCategoria === null) {
+        return null;
+    }
+
+    return $objetoCategoria;
+}
+
+
 ?>

@@ -33,7 +33,7 @@
     <div class="container">
         <h1>Formulario de Libro</h1>
         <br>
-        <form action="../metodos/addLibro1.php" method="post">
+        <form action="../metodos/addLibro.php" method="post">
             <div class="form-group">
                 <label for="nombre">Nombre del Libro</label><br>
                 <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre libro"><br>

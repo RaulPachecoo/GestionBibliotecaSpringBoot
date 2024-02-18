@@ -13,6 +13,7 @@
             background-image: url(../imagenes/fondo_difuminado_login.jpg);
             background-position: center;
             background-size: cover;
+
         }
         .container{
             margin-top: 50px;
@@ -21,39 +22,29 @@
             border-radius: 10px 10px 10px 10px;
             -moz-border-radius: 10px 10px 10px 10px;
             -webkit-border-radius: 10px 10px 10px 10px;
+            
             -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
             -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
             box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+            
             padding: 30px;
             box-sizing: border-box;
+
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Formulario de Libro</h1>
+<div class="container">
+        <h1>Formulario de Categoría</h1>
         <br>
-        <form action="../metodos/addLibro1.php" method="post">
+        <form action="../metodos/add.php" method="post">
             <div class="form-group">
-                <label for="nombre">Nombre del Libro</label><br>
-                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre libro"><br>
-                <label for="autor">Autor del Libro</label><br>
-                <input type="text" class="form-control" id="autor" name="autor" placeholder="Autor libro"><br>
-                <label for="editorial">Editorial del Libro</label><br>
-                <input type="text" class="form-control" id="editorial" name="editorial" placeholder="Editorial libro"><br>
-                <label for="categoria">Categoría del Libro</label>
-                <select class="form-control" id="categoria" name="categoria">
-                    <?php
-                    $url = "http://localhost:8080/BIBLIOTECA/categoria";
-                    $json = file_get_contents($url);
-                    $obj = json_decode($json);//Convierte un string codificado en JSON a una variable de PHP.
-                    foreach ($obj as $ob): 
-                    echo "<option value='" . $ob->id . "'>" . $ob -> categoria . "</option>";
-                    endforeach;
-                    ?>
-                </select>
+                <label for="categoria">Nombre de la Categoría</label>
+                <!-- Utilizar un input de tipo text para ingresar el nombre de la categoría -->
+                <input type="text" class="form-control" id="categoria" name="categoria" placeholder="Ingrese el nombre de la categoría">
             </div>
             <br>
+            <!-- Botón para enviar el formulario -->
             <button type="submit" class="btn btn-primary">Enviar</button>
             <br>
         </form>

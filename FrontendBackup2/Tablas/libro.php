@@ -79,14 +79,10 @@ $obj = json_decode($json);//Convierte un string codificado en JSON a una variabl
     <!--Importante aqui,el valor de categoria en los libros es el objeto categoria como tal,asi que le sacamos la categoria a categoria -->
     <td><?php echo $ob->categoria->categoria; ?></td>
 
-    <td><a href="../formularios/updateFormLibro.php?id=<?php echo $ob->id; ?>">
-        <button><img src="https://cdn-icons-png.flaticon.com/256/45/45706.png" class="icono"/>
-        <?php $_SESSION["id"] = $ob -> id; $_SESSION["libro"]= $ob -> categoria;?></button></a>
-        <a href="../metodos/deleteLibro.php?id=<?php echo $ob->id; ?>">
-          <button><img src="https://cdn-icons-png.flaticon.com/256/4265/4265064.png" class="icono"/>
-          </button>
-        </a>
-    </td>
+    <td><a href="../formularios/updateFormLibro.php"><button><img src="https://cdn-icons-png.flaticon.com/256/45/45706.png" class="icono"/>
+        <?php $_SESSION["id"] = $ob -> id; $_SESSION["libro"]= $ob -> categoria;?></button></a><a href="../metodos/deleteLibro.php">
+            <button><img src="https://cdn-icons-png.flaticon.com/256/4265/4265064.png" class="icono"/>
+        <?php $_SESSION["id"] = $ob -> id; $_SESSION["tipo"]= "libro"?></button></a> </td>
 
   </tr>
   <?php endforeach; ?>
@@ -96,4 +92,3 @@ $obj = json_decode($json);//Convierte un string codificado en JSON a una variabl
 
   </body>
 </html>
-
