@@ -2,7 +2,7 @@
 
 $host = "localhost";
 $usuario = "root";
-$contraseña ="daw78243571D";
+$contraseña ="root";
 $bd = "accesoDatos";
 $dsn = "mysql:host=$host;dbname=$bd";
 

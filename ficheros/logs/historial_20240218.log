@@ -1,0 +1,12 @@
+
+Usuario Conectado: root (2024-02-18 16:04:39)
+Update Libro(id, nombre, autor, editorial, categoria): (id: 2) -> (0, Interfaces, Pepe, Editorial 3, 1)
+Delete Libro: (id: 2)
+Save Libro(id, nombre, autor, editorial, categoria): (3, Hola, Pepe, Editorial 3, 1)
+Update Libro(id, nombre, autor, editorial, categoria): (id: 3) -> (0, Hola, Pepe, Editorial 1, 1)
+Delete Libro: (id: 3)
+Delete Prestamo: (id: 23)
+Save Libro(id, nombre, autor, editorial, categoria): (4, jhgg, Pepe, Editorial 1, 1)
+Delete Libro: (id: 4)
+Usuario Conectado: root (2024-02-18 16:29:38)
+Save Prestamo(idPrestamo, fechaPrestamo, idLibro, idUsuario): (0, 2024-02-20 01:00:00.0, 1, 2)

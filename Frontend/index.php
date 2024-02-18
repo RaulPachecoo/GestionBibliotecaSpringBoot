@@ -1,4 +1,5 @@
 <?php
+global $conexion;
 session_start();
 require "conexion.php";
 
@@ -7,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
     $_SESSION['usuario'] = $usuario;
     $_SESSION['password'] = $password;
-
+    //$error = "";
     
     // Utilizar una consulta preparada para evitar la inyección de SQL
     $sql = "SELECT * FROM accesoDatos WHERE usuario = ? AND password = ?";
@@ -19,8 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: ./pPrincipal.php");
         exit; // Salir del script después de redireccionar
     } else {
-        //echo "<script>alert('Error: Usuario o contraseña incorrectos');</script>";
-        $error = "Usuario o contraseña incorrectos";
+        echo "<script>alert('Error: Usuario o contraseña incorrectos');</script>";
+        //$error = "Usuario o contraseña incorrectos";
     }
 }
 ?>
@@ -72,10 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <button type="submit" title="Ingresar" name="Ingresar">Login</button>
                         
                     </form>
-                    <div>
-                            <p class="errorUsuario"><?php echo $error; ?></p>
-                            
-                        </div>
+                  
                     
                 </div>
                 
