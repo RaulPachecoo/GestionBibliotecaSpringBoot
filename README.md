@@ -25,8 +25,28 @@ Una vez configurada la conexión con la base de datos, las entidades han sido ge
 
 ## **REPOSITORIOS**
 Los repositorios son interfaces vacías que extienden de la interfaz CrudRepository proporcionada por Spring Data, que incluye métodos para operaciones CRUD (Crear, Leer, Borrar y Actualizar). Es decir estos repositorios contienen métodos predefinidos que nos facilitan el trabajo a la hora de trabajar con bases de datos.
+
+![Texto alternativo](https://files.catbox.moe/3e6lt1.png)
+
+![Texto alternativo](https://files.catbox.moe/fuiph5.png)
+
+![Texto alternativo](https://files.catbox.moe/iosxhj.png)
+
+![Texto alternativo](https://files.catbox.moe/yp40ql.png)
+
+![Texto alternativo](https://files.catbox.moe/xd6n25.png)
+
 ## **CONTROLADORES**
 Los controladores son las clases encargadas de manejar las GET, PUT, POST y DELETE. Es decir, el controlador accede al repositorio correspondiente a esa tabla para realizar las distintas operaciones sobre la base de datos. Además los controladores guardan las acciones realizadas en la tabla histórico y en un archivo.
+
+![Texto alternativo](https://files.catbox.moe/ebt7c9.png)
+
+![Texto alternativo](https://files.catbox.moe/5gxtbj.png)
+
+![Texto alternativo](https://files.catbox.moe/rhzlyq.png)
+
+![Texto alternativo](https://files.catbox.moe/rg1clk.png)
+
 ## **INTERFAZ**
 La interfaz consiste en una pantalla destinada a realizar el inicio de sesión en la aplicación, junto con otras pantallas diseñadas para llevar a cabo diversas operaciones de forma interactiva sobre la base de datos.
 ### **LOGIN**
