@@ -6,6 +6,7 @@ El objetivo de este proyecto es realizar un microservicio API REST con el framew
 Hemos realizado la organización del trabajo utilizando metodologías ágiles, en concreto la metodología SCRUM. Para ello hemos utilizado la herramienta ClickUp y hemos designado un SCRUM Manager que ha sido Raúl. En las diferentes reuniones realizadas en clase hemos debatido la partición del trabajo y posteriormente cada uno ha trabajado individualmente en la tarea que se le asignó.
 ## **CONEXIÓN A LA BASE DE DATOS**
 Hemos realizado la conexión a la base de datos utilizando el fichero application.propertis, que contiene la información necesaria para configurar esta conexión.
+!([ruta/a/la/imagen.png](https://files.catbox.moe/v1z0vp.png))
 ## **ENTIDADES**
 Una vez configurada la conexión con la base de datos, las entidades han sido generadas automáticamente con anotaciones JPA. Estas entidades contienen solamente los atributos de cada tabla y los métodos getters y setters. Para las relaciones entre tablas hemos utilizado listas y objetos apropiadamente.
 ## **REPOSITORIOS**
@@ -15,12 +16,12 @@ Los controladores son las clases encargadas de manejar las GET, PUT, POST y DELE
 ## **INTERFAZ**
 La interfaz consiste en una pantalla destinada a realizar el inicio de sesión en la aplicación, junto con otras pantallas diseñadas para llevar a cabo diversas operaciones de forma interactiva sobre la base de datos.
 ### **LOGIN**
-[Descripción del formulario de inicio de sesión]
+
 ### **PANTALLA PRINCIPAL**
-[Descripción de la pantalla principal]
+Esta pantalla solamente contiene el menú de navegación para moverse por las distintas tablas y un botón para cerrar sesión.
 ### **PANTALLAS DE LECTURA**
-[Descripción de las pantallas de visualización de datos]
+Estas pantallas contienen la información de las distintas tablas, préstamos, libros…
 ### **FORMULARIOS DE INSERCIÓN Y ACTUALIZACIÓN**
-[Descripción de los formularios para insertar y actualizar datos]
+Formularios para insertar y modificar los datos de una fila en la base de datos.
 ### **MÉTODOS CRUD**
-[Descripción de los métodos utilizados para realizar operaciones CRUD]
+Métodos utilizados para realizar las peticiones al servicio de API REST al realizar las operaciones CRUD. Cada tabla tiene unos métodos propios para insertar, borrar y actualizar. Este es un ejemplo, de los métodos utilizados para las operaciones con la tabla Libro.
